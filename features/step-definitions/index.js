@@ -108,6 +108,36 @@ When(/^I fill the sign up form with (.*), (.*), (.*), (.*), (.*)$/, (name, lastn
   
 });
 
+When('I fill the sign up form with right input', () => {
+  var cajaSignUp = $('.cajaSignUp');
+
+  var nameInput = cajaSignUp.$('input[name="nombre"]');
+  nameInput.click();
+  nameInput.keys('Nombre');
+  
+  var lastNameInput = cajaSignUp.$('input[name="apellido"]');
+  lastNameInput.click();
+  lastNameInput.keys('Apellido');
+  
+  var date = new Date();
+  
+  var emailInput = cajaSignUp.$('input[name="correo"]');
+  emailInput.click();
+  emailInput.keys('user' + date.getMilliseconds() + '@example.com');
+  
+  var passwordInput = cajaSignUp.$('input[name="password"]');
+  passwordInput.click();
+  passwordInput.keys('Contrasena');
+  
+  var programInput = cajaSignUp.$('select[name="idPrograma"]');
+  programInput.click();
+  programInput.$('option:nth-child(22)').click();
+  
+  var termsAcceptedInput = cajaSignUp.$('input[name="acepta"]');
+  termsAcceptedInput.click();
+  
+});
+
 Then(/^I expect the div (.*)$/, wrongField => {
   $(wrongField).waitForDisplayed(5000);
 });

@@ -21,3 +21,11 @@ Scenario Outline: Sign up failed with wrong inputs
 	  | Nombre           | Apellido   | box@example.com          |            | true          | .cajaSignUp>form:nth-child(2)>fieldset:nth-child(6)>div:nth-child(1)>div:nth-child(1).has-error    |
 	  | Nombre           | Apellido   | box@example.com          | Contras    | true          | .cajaSignUp>form:nth-child(2)>fieldset:nth-child(6)>div:nth-child(1)>div:nth-child(1).has-error    |
 	  | Nombre           | Apellido   | box@example.com          | Contrasena | false         | .cajaSignUp>form:nth-child(2)>fieldset:nth-child(7)>div:nth-child(1)>div:nth-child(2).alert-danger |
+	  
+Scenario: Successful sign up
+
+  Given I go to losestudiantes home screen
+    When I open the sign up screen
+    And I fill the sign up form with right input
+    And I try to sign up
+    Then I expect to be able to login
